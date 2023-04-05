@@ -13,6 +13,7 @@ const RecipesController = {
   Search: async (req, res) => {
     try {
       console.log("Connected to MongoDB server");
+      console.log(req.body.targetIngredients);
 
       let targetIngredients = req.body.targetIngredients;
       if (Array.isArray(targetIngredients)) {
