@@ -3,7 +3,7 @@ import Recipe from "../recipe/Recipe";
 import AllRecipes from "../allRecipes/AllRecipes";
 import Spinner from "../spinner/spinner";
 import IngredientList from "../ingredientList/IngredientList";
-import Pagination from "../pagination/pagination"
+import Pagination from "../pagination/pagination";
 
 const Ingredient = ({ navigate }) => {
   const [checked, setChecked] = useState([]);
@@ -12,8 +12,7 @@ const Ingredient = ({ navigate }) => {
   const [collapse, setCollapse] = useState(false);
   const [loading, setLoading] = useState(false);
   const [unchecked, setUnchecked] = useState(true);
-  const [pageAmount, setPageAmount] = useState()
-
+  const [pageAmount, setPageAmount] = useState();
 
   const getRecipes = async (skip) => {
     setLoading(true);
@@ -33,13 +32,13 @@ const Ingredient = ({ navigate }) => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      setPageAmount(Math.ceil(data.totalMatches/10))
+      setPageAmount(Math.ceil(data.totalMatches / 10));
       // if (!Array.isArray(data.result)) {
       //   throw new Error("Data is not an array");
       // }
 
       await setMatchedRecipes(data.recipes);
-      console.log(matchedRecipes);
+      console.log(data);
       setLoading(false);
       // setSearchIngredients([]);
       setChecked([]);
@@ -167,7 +166,10 @@ const Ingredient = ({ navigate }) => {
               Matched Recipes
             </h2>
             <AllRecipes recipes={matchedRecipes} />
-            <Pagination amount={pageAmount.toString()} handleClick={getRecipes}></Pagination>
+            <Pagination
+              amount={pageAmount.toString()}
+              handleClick={getRecipes}
+            ></Pagination>
           </div>
         )}
       </div>

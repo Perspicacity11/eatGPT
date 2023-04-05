@@ -36,7 +36,7 @@ const RecipesController = {
       )
         .skip(skip)
         .limit(limit);
-
+      console.log(recipes);
       const totalMatches = await Recipe.countDocuments({
         Ingredients: { $all: [targetIngredients] },
       }).limit(200);
