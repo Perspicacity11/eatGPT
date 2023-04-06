@@ -14,7 +14,6 @@ const Ingredient = ({ navigate }) => {
   const [loading, setLoading] = useState(false);
   const [unchecked, setUnchecked] = useState(true);
   const [pageAmount, setPageAmount] = useState();
-  const [search, setSearch] = useState();
 
   const getRecipes = async (skip) => {
     setLoading(true);
@@ -25,7 +24,7 @@ const Ingredient = ({ navigate }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          targetIngredients: search,
+          targetIngredients: searchIngredients,
           skip: skip,
           limit: 12,
         }),
@@ -59,8 +58,8 @@ const Ingredient = ({ navigate }) => {
       updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
-    setSearch(lowerCaseList);
-    setSearchIngredients([]);
+    // setSearch(lowerCaseList);
+    setSearchIngredients(lowerCaseList);
   };
 
   const handleUncheckAll = () => {
@@ -85,7 +84,7 @@ const Ingredient = ({ navigate }) => {
       alert("No Items Checked");
     } else {
       getRecipes();
-
+      console.log();
       setCollapse(true);
       setUnchecked(false);
     }
