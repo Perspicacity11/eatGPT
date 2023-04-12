@@ -4,6 +4,7 @@ import Navbar from "../navbar/Navbar";
 const UserProfile = ({ user, navigate }) => {
   const [bio, setBio] = useState(user.bio);
   const [editing, setEditing] = useState(false);
+  const [image, setImage] = useState(user.image);
 
   // useEffect(() => {
   //   if (!window.localStorage.getItem("token")) {
@@ -19,7 +20,7 @@ const UserProfile = ({ user, navigate }) => {
     console.log("USER INFO ENTERING PUT REQUEST: " + user);
     fetch(`/users/${user._id}`, {
       method: "PUT",
-      body: JSON.stringify({ bio }),
+      body: JSON.stringify({ bio, image }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -31,11 +32,16 @@ const UserProfile = ({ user, navigate }) => {
 
   const handleCancel = () => {
     setBio(user.bio);
+    setImage(user.image);
     setEditing(false);
   };
 
   const handleBioChange = () => {
     setBio("Hello World");
+  };
+
+  const handleImageChange = (event) => {
+    setImage(event.target.value);
   };
 
   const handleNewRecipe = () => {
@@ -55,6 +61,16 @@ const UserProfile = ({ user, navigate }) => {
             <br></br>
             {editing ? (
               <>
+                <div class="pb-4">
+                  <input
+                    className="shadow appearance-none border rounded-lg text-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Image URL"
+                    id="image"
+                    type="text"
+                    value={image}
+                    onChange={handleImageChange}
+                  />
+                </div>
                 <div>
                   <textarea
                     class="border border-black"
@@ -82,6 +98,10 @@ const UserProfile = ({ user, navigate }) => {
               </>
             ) : (
               <>
+                <div className="justify-center">
+                  <img src={image} alt="Profile image" />
+                </div>
+                <br></br>
                 <div>
                   <p>{bio}</p>
                   <br></br>

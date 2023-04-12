@@ -7,6 +7,6 @@ router.post("/", UsersController.Create);
 
 router.get("/:id", UsersController.GetUser);
 
-router.put("/:id", UsersController.UpdateUserBio);
+router.put("/:id", UsersController.UpdateUserBioImage);
 
 module.exports = router;

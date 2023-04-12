@@ -39,7 +39,7 @@ const UsersController = {
     }
   },
 
-  UpdateUserBio: async (req, res) => {
+  UpdateUserBioImage: async (req, res) => {
     try {
       console.log("UPDATING USER BIO" + req.params.id);
       const _id = req.params.id;
@@ -49,6 +49,7 @@ const UsersController = {
       }
 
       user.bio = req.body.bio;
+      user.image = req.body.image
       await user.save();
       res.json({ message: "OK" });
     } catch (error) {
