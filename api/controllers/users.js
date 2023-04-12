@@ -12,6 +12,7 @@ const UsersController = {
       password: hashedPassword,
       email: req.body.email,
       bio: req.body.bio,
+      image: req.body.image,
     });
 
     await user.save((err) => {
@@ -28,7 +29,9 @@ const UsersController = {
     try {
       console.log("GETTING USER" + req.params.id);
       const _id = req.params.id;
-      const user = await User.findOne({ _id: _id }).select("userName bio");
+      const user = await User.findOne({ _id: _id }).select(
+        "userName bio image"
+      );
       if (!user) {
         return res.status(404).json({ error: "User not found" });
       }
@@ -49,7 +52,7 @@ const UsersController = {
       }
 
       user.bio = req.body.bio;
-      user.image = req.body.image
+      user.image = req.body.image;
       await user.save();
       res.json({ message: "OK" });
     } catch (error) {

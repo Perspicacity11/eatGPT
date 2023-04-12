@@ -98,7 +98,7 @@ const UserProfile = ({ user, navigate }) => {
               </>
             ) : (
               <>
-                <div className="justify-center">
+                <div class="pb-4 flex justify-center border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4)">
                   <img src={image} alt="Profile image" />
                 </div>
                 <br></br>
