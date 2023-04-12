@@ -1,3 +1,4 @@
+const AddNewRecipe = require("../models/addNewRecipe");
 const Recipe = require("../models/recipe");
 
 const RecipesController = {
@@ -21,12 +22,12 @@ const RecipesController = {
       const limit = parseInt(req.body.limit);
 
       const recipes = await Recipe.find(
-        { Ingredients: { $all: targetIngredients } },
+        { Ingredients: { $all: targetIngredients }, ImageLinks: { $ne: "" } },
         {
           RecipeId: 1,
           Name: 1,
           Calories: 1,
-          CookTime: 1,
+          TotalTime: 1,
           ImageLinks: 1,
           Ingredients: 1,
           _id: 1,
@@ -45,6 +46,16 @@ const RecipesController = {
       res.status(500).send("Error getting recipes from database");
     }
   },
+  Create: async (req, res) => {
+
+    try {
+      const recipe = await AddNewRecipe.create(req.body);
+      console.log(recipe);
+      res.status(200).json({ message: "Recipe Successfully Added To The Database!" })
+    } catch (error) {
+      res.status(500).json({ error: error.message })
+    }
+  }
 };
 
 module.exports = RecipesController;
