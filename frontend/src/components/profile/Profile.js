@@ -57,7 +57,7 @@ const UserProfile = ({ user, navigate }) => {
           class="p-8 bg-orange-200 w-1/2 mx-auto mt-12 rounded-lg shadow-xl"
         >
           <div class="mt-2 text-center font-bold tracking-tight text-orange-600">
-            <h1 class="text-3xl">{user.userName}</h1>
+            <h1 class="text-5xl">{user.userName}</h1>
             <br></br>
             {editing ? (
               <>
@@ -98,8 +98,10 @@ const UserProfile = ({ user, navigate }) => {
               </>
             ) : (
               <>
-                <div class="pb-4 flex justify-center border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4)">
-                  <img src={image} alt="Profile image" />
+                <div className="flex justify-center">
+                  <div class="rounded-lg shadow-xl object-cover h-80 w-80">
+                    <img src={image} alt="Profile image" className="rounded-lg"/>
+                  </div>
                 </div>
                 <br></br>
                 <div>
