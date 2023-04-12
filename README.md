@@ -30,9 +30,11 @@ npm install
 
 Create a .env file and add the following environment variables:
 
-PORT: the port number to run the server on (default is 3000)
-MONGODB_URI: the URI for your MongoDB database
-JWT_SECRET: a secret key for JSON Web Token (JWT) authentication
+```
+PORT = 3000
+DB_CONNECT = mongodb://localhost:27017
+JWT_SECRET = "my-secret-key"
+```
 
 Start the server from the API directory:
 
@@ -53,6 +55,32 @@ You can now navigate to http://localhost:<port> in your browser to use the app.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
+
+## The app
+
+<img src="./frontend/public/Images/login.png"
+     alt="Login"
+     style="float: left; margin-right: 10px;" />
+
+<img src="./frontend/public/Images/signup.png"
+     alt="Signup"
+     style="float: left; margin-right: 10px;" />
+
+<img src="./frontend/public/Images/Ingredient-checkbox.png"
+     alt="Main page"
+     style="float: left; margin-right: 10px;" />
+
+<img src="./frontend/public/Images/Matched-recipes.png"
+     alt="Recipe search"
+     style="float: left; margin-right: 10px;" />
+
+<img src="./frontend/public/Images/Recipe-detail.png"
+     alt="Recipe detail page"
+     style="float: left; margin-right: 10px;" />
+
+<img src="./frontend/public/Images/Profile.png"
+     alt="Profile page"
+     style="float: left; margin-right: 10px;" />
 
 ## Technologies Used
 
